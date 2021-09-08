@@ -3,6 +3,7 @@ from paddle import Paddle
 from ball import Ball
 from time import sleep
 from scoreboard import Scoreboard
+from line import Line
 
 
 screen = Screen()
@@ -14,6 +15,7 @@ r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 ball = Ball()
 scoreboard = Scoreboard()
+line = Line()
 screen.listen()
 screen.onkey(r_paddle.goUP, "Up")
 screen.onkey(r_paddle.goDOWN, "Down")
@@ -30,8 +32,8 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
-    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 \
-            or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
+    if ball.distance(r_paddle) < 55 and 330 < ball.xcor() < 350 \
+            or ball.distance(l_paddle) < 55 and -350 < ball.xcor() < -330:
         ball.bounce_x()
 
     if ball.xcor() > 380:
